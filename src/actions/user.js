@@ -15,7 +15,7 @@ export const getUser = () => {
       dispatch(userActions.getUserRequest());
 
       const userData = await getUserData();
-      dispatch(userActions.getUserSuccess(userData.user));
+      dispatch(userActions.getUserSuccess(userData));
     } catch (err) {
       dispatch(userActions.getUserFailure(err.response.data.message));
     }

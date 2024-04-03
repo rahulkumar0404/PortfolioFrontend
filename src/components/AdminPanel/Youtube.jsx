@@ -105,8 +105,8 @@ const Youtube = () => {
 
         <div className="adminPanelYoutubeVideos">
           {user &&
-            user.user.youtube &&
-            user.user.youtube.map((item) => (
+            user.youtube &&
+            user.youtube.map((item) => (
               <YoutubeCard
                 key={item._id}
                 url={item.url}

@@ -153,7 +153,12 @@ const Home = ({ timeline, youtube, skills }) => {
 
         <div className="homeCanvasBox">
           <Typography variant="h2">FULL STACK</Typography>
-          <Typography variant="h2" style={{letterSpacing: "10px", fontSize: "3rem"}}>DEVELOPER</Typography>
+          <Typography
+            variant="h2"
+            style={{ letterSpacing: '10px', fontSize: '3rem' }}
+          >
+            DEVELOPER
+          </Typography>
         </div>
 
         <Link to="/projects">Projects</Link>
@@ -188,15 +193,28 @@ const Home = ({ timeline, youtube, skills }) => {
       <div className="homeYoutube">
         <Typography variant="h3">Short Video</Typography>
         <div className="homeYoutubeWrapper">
-          {youtube.map((item) => (
-            <YoutubeCard
-              key={item._id}
-              image={item.image.url}
-              title={item.title}
-              url={item.url}
-              id={item._id}
-            />
-          ))}
+          {youtube.length > 0 &&
+            youtube.map((item) => (
+              <YoutubeCard
+                key={item._id}
+                image={item.image.url}
+                title={item.title}
+                url={item.url}
+                id={item._id}
+              />
+            ))}
+          {youtube.length === 0 && (
+            <div
+              style={{
+                font: "700 4vmax 'Roboto', sans-serif",
+                display: 'flex',
+                alignItems: 'center',
+                justifyContent: 'center',
+              }}
+            >
+              No Video Available !
+            </div>
+          )}
         </div>
       </div>
     </div>

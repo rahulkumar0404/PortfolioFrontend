@@ -15,7 +15,7 @@ import AdminPanel from './components/AdminPanel/AdminPanel.jsx';
 import Timeline from './components/AdminPanel/Timeline.jsx';
 import Youtube from './components/AdminPanel/Youtube.jsx';
 import Project from './components/AdminPanel/Project.jsx';
-
+import Loader from './components/Loader/Loader.jsx';
 // actions
 import { getUser } from './actions/user.js';
 import { loadUser } from './actions/login.js';
@@ -28,11 +28,11 @@ function App() {
     dispatch(getUser());
     dispatch(loadUser());
   }, [dispatch]);
-  console.log(user);
   if (loading) {
-    return <div>Loading</div>;
+    return <Loader />;
   }
   return (
+    
     <Router>
       <Header />
       <Routes>
@@ -48,9 +48,15 @@ function App() {
             ) : null
           }
         />
-        <Route path="/about" element={user ? <About about={user.about}/>: null} />
-        <Route path="/projects" element={user ? <Projects projects={user.projects}/>: null} />
-        <Route path="/contact" element={user ?  <Contact /> : null } />
+        <Route
+          path="/about"
+          element={user ? <About about={user.about} /> : null}
+        />
+        <Route
+          path="/projects"
+          element={user ? <Projects projects={user.projects} /> : null}
+        />
+        <Route path="/contact" element={user ? <Contact /> : null} />
         <Route
           path="/account"
           element={isAuthenticated ? <AdminPanel /> : <Login />}

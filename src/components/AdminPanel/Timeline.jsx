@@ -107,8 +107,8 @@ const Timeline = () => {
         </form>
         <div className="adminPanelYoutubeVideos">
           {user &&
-            user.user.timeline &&
-            user.user.timeline.map((item) => (
+            user.timeline &&
+            user.timeline.map((item) => (
               <div key={item._id} className="youtubeCard">
                 <Typography variant="h6">{item.title}</Typography>
                 <Typography variant="body1" style={{ letterSpacing: '2px' }}>

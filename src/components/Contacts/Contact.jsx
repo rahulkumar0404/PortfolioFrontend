@@ -14,13 +14,16 @@ const Contact = () => {
   const dispatch = useDispatch();
   const alert = useAlert();
   const {
-    loading,
+    onUpdateLoading: loading,
     message: alertMessage,
     error,
   } = useSelector((state) => state.updateUser);
-  const contactFormHandler = (event) => {
+  const contactFormHandler = async (event) => {
     event.preventDefault();
-    dispatch(ContactUser(name, email, message));
+    await dispatch(ContactUser(name, email, message));
+    setName("")
+    setEmail("")
+    setMessage("")
   };
 
   useEffect(() => {

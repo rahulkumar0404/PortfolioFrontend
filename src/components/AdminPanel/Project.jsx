@@ -124,8 +124,8 @@ const Project = () => {
 
         <div className="adminPanelYoutubeVideos">
           {user &&
-            user.user.projects &&
-            user.user.projects.map((item) => (
+            user.projects &&
+            user.projects.map((item) => (
               <ProjectCard
                 key={item._id}
                 url={item.url}
