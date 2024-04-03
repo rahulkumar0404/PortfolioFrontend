@@ -1,5 +1,6 @@
 import axios from 'axios';
 import { loginActions } from '../reducers/login';
+import { BASE_URL } from '../helper';
 
 const config = {
   headers: {
@@ -11,7 +12,7 @@ export const loginUser = (email, password) => {
   return async (dispatch) => {
     const loginUser = async () => {
       const response = await axios.post(
-        'http://localhost:4000/api/login',
+        `${BASE_URL}/api/login`,
         {
           email,
           password,
@@ -43,7 +44,7 @@ export const logoutUser = () => {
   return async (dispatch) => {
     const logout = async () => {
       const response = await axios.get(
-        'http://localhost:4000/api/logout',
+        `${BASE_URL}/api/logout`,
         config
       );
       if (response.statusText != 'OK') {
@@ -66,7 +67,7 @@ export const logoutUser = () => {
 export const loadUser = () => {
   return async (dispatch) => {
     const loadUserData = async () => {
-      const response = await axios.get('http://localhost:4000/api/me', config);
+      const response = await axios.get(`${BASE_URL}/api/me`, config);
       if (response.statusText != 'OK') {
         throw new Error('Something went wrong');
       }

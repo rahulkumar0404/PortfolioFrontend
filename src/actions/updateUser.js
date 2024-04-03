@@ -1,18 +1,12 @@
 import axios from 'axios';
 import { updateUserAction } from '../reducers/updateUser.js';
-
-const config = {
-  headers: {
-    'Content-Type': 'application/json',
-  },
-  withCredentials: true,
-};
+import { BASE_URL, config } from '../helper.js';
 
 export const updateUser = (name, email, password, skills, about) => {
   return async (dispatch) => {
     const updateUserData = async () => {
       const response = await axios.put(
-        'http://localhost:4000/api/admin/update',
+        `${BASE_URL}/api/admin/update`,
         {
           name,
           email,
@@ -20,12 +14,7 @@ export const updateUser = (name, email, password, skills, about) => {
           skills,
           about,
         },
-        {
-          headers: {
-            'Content-Type': 'application/json',
-          },
-          withCredentials: true,
-        }
+        config
       );
       if (response.statusText != 'OK') {
         throw new Error('Something went wrong');
@@ -47,18 +36,13 @@ export const addTimeline = (title, description, date) => {
   return async (dispatch) => {
     const addTimeline = async () => {
       const response = await axios.post(
-        'http://localhost:4000/api/admin/timeline/add',
+        `${BASE_URL}/api/admin/timeline/add`,
         {
           title,
           description,
           date,
         },
-        {
-          headers: {
-            'Content-Type': 'application/json',
-          },
-          withCredentials: true,
-        }
+        config
       );
       if (response.statusText != 'OK') {
         throw new Error('Something went wrong');
@@ -85,7 +69,7 @@ export const deleteTimeline = (id) => {
   return async (dispatch) => {
     const addTimeline = async () => {
       const response = await axios.delete(
-        `http://localhost:4000/api/admin/timeline/${id}`,
+        `${BASE_URL}/api/admin/timeline/${id}`,
         config
       );
       if (response.statusText != 'OK') {
@@ -113,7 +97,7 @@ export const addYoutube = (title, url, image) => {
   return async (dispatch) => {
     const addYoutubeVideo = async () => {
       const response = await axios.post(
-        'http://localhost:4000/api/admin/youtube/add',
+        `${BASE_URL}/api/admin/youtube/add`,
         {
           title,
           url,
@@ -142,7 +126,7 @@ export const deleteYoutube = (id) => {
   return async (dispatch) => {
     const deleteYoutube = async () => {
       const response = await axios.delete(
-        `http://localhost:4000/api/admin/youtube/${id}`,
+        `${BASE_URL}/api/admin/youtube/${id}`,
         config
       );
       if (response.statusText != 'OK') {
@@ -166,7 +150,7 @@ export const addProject = (title, url, image, description, techStack) => {
   return async (dispatch) => {
     const addUserProject = async () => {
       const response = await axios.post(
-        'http://localhost:4000/api/admin/projects/add',
+        `${BASE_URL}/api/admin/projects/add`,
         {
           title,
           url,
@@ -197,7 +181,7 @@ export const deleteProject = (id) => {
   return async (dispatch) => {
     const deleteUserProject = async () => {
       const response = await axios.delete(
-        `http://localhost:4000/api/admin/projects/${id}`,
+        `${BASE_URL}/api/admin/projects/${id}`,
         config
       );
       if (response.statusText != 'OK') {
@@ -221,7 +205,7 @@ export const ContactUser = (name, email, message) => {
   return async (dispatch) => {
     const contactUsRequest = async () => {
       const response = await axios.post(
-        `http://localhost:4000/api/contact`,
+        `${BASE_URL}/api/contact`,
         { name, email, message },
         config
       );

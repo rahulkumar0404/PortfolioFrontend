@@ -1,9 +1,10 @@
 import axios from 'axios';
 import { userActions } from '../reducers/user';
+import { BASE_URL } from '../helper';
 export const getUser = () => {
   return async (dispatch) => {
     const getUserData = async () => {
-      const response = await axios.get('http://localhost:4000/api/user');
+      const response = await axios.get(`${BASE_URL}/api/user`);
       if (response.statusText != 'OK') {
         throw new Error('Something went wrong');
       }
